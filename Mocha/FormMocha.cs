@@ -30,6 +30,11 @@ namespace Mocha
         }
         private void FormMocha_Load(object sender, EventArgs e)
         {
+            cbDisplayRequired.Checked = Properties.Settings.Default.DisplayBoost;
+            cbSystemRequired.Checked = Properties.Settings.Default.SystemBoost;
+            cbBoostAlwaysOn.Checked = Properties.Settings.Default.BoostAlwaysOn;
+            tpBoostOn.Value = Properties.Settings.Default.BoostOn;
+            tpBoostOff.Value = Properties.Settings.Default.BoostOff;
         }
 
         private void BtnOK_Click(object sender, EventArgs e)
@@ -119,26 +124,36 @@ namespace Mocha
         private void cbDisplayRequired_CheckedChanged(object sender, EventArgs e)
         {
             SetState();
+            Properties.Settings.Default.DisplayBoost = cbDisplayRequired.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void cbSystemRequired_CheckedChanged(object sender, EventArgs e)
         {
             SetState();
+            Properties.Settings.Default.SystemBoost = cbSystemRequired.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void cbBoostAlwaysOn_CheckedChanged(object sender, EventArgs e)
         {
             SetState();
+            Properties.Settings.Default.BoostAlwaysOn = cbBoostAlwaysOn.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void tpBoostOn_ValueChanged(object sender, EventArgs e)
         {
             SetState();
+            Properties.Settings.Default.BoostOn = tpBoostOn.Value;
+            Properties.Settings.Default.Save();
         }
 
         private void tpBoostOff_ValueChanged(object sender, EventArgs e)
         {
             SetState();
+            Properties.Settings.Default.BoostOff = tpBoostOff.Value;
+            Properties.Settings.Default.Save();
         }
     }
 }
